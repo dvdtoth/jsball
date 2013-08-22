@@ -12,7 +12,12 @@ function Player(id) {
     this.color = getRandomColor();
     players.push(this);
 
-    // Create a handy
+    rebuildLookup();
+
+}
+
+// Create a handy lookup object
+function rebuildLookup() {
     for (var i = 0, len = players.length; i < len; i++) {
         lookup[players[i].id] = players[i];
     }
@@ -44,7 +49,6 @@ io.sockets.on('connection', function (client) {
     // Broadcast new position of clients
     client.on('position', function (data) {
         client.broadcast.emit('new_position', data);
-//        console.log(data);
     });
 
     // Change name of a player
@@ -55,6 +59,13 @@ io.sockets.on('connection', function (client) {
         lookup[data.id].setName(data.name);
         client.emit('name_changed', data);
         client.broadcast.emit('name_changed', data);
+    });
+
+    // socket disconnected
+    client.on('disconnect', function () {
+        players.splice(lookup[client.id], 1);
+        rebuildLookup();
+        client.broadcast.emit('player_left', client.id);
     });
 
 });

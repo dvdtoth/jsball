@@ -29,6 +29,11 @@ socket.on('player_entered', function (player) {
     drawNewPlayer(player);
 });
 
+// Player left
+socket.on('player_left', function (id) {
+    deletePlayer(id);
+});
+
 // Move other players
 socket.on('new_position', function (data) {
     $('.player-' + data.id).css({
@@ -37,6 +42,7 @@ socket.on('new_position', function (data) {
     });
 });
 
+// Name change
 socket.on('name_changed', function (data) {
     $('.player-' + data.id).text(data.name);
 });
@@ -46,6 +52,17 @@ function drawNewPlayer(player) {
     player.class = '.player-' + player.id;
     $("<div class='player-" + player.id + "'>" + player.name + "</div>").appendTo("body");
     $(player.class).css("background-color", player.color);
+}
+
+// Remove left player's div
+function deletePlayer(id) {
+
+    var div = document.getElementsByClassName('player-' + id);
+
+    for (var i = 0, len = div.length; i < len; i++) {
+        div[i].parentNode.removeChild(div[i]);
+    }
+
 }
 
 $(function () {
