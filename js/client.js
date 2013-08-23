@@ -43,7 +43,7 @@ socket.on('new_position', function (data) {
 });
 
 socket.on('kick', function (id) {
-    socket.emit()
+ //@TODO
 });
 
 // Name change
