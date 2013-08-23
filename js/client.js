@@ -42,6 +42,10 @@ socket.on('new_position', function (data) {
     });
 });
 
+socket.on('kick', function (id) {
+    socket.emit()
+});
+
 // Name change
 socket.on('name_changed', function (data) {
     $('.player-' + data.id).text(data.name);
