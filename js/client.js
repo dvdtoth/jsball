@@ -4,6 +4,33 @@ var socket = io.connect('http://localhost', {port: 8088});
 
 var player = {};
 
+var radius = 20;
+
+var theplayer = {
+    x: Math.random() * (600 - radius),
+    y: Math.random() * (300 - radius),
+    xold: this.x,
+    yold: this.y,
+    draw: function () {
+        // clean up old position
+
+        ctx.clearRect(this.xold - radius -1, this.yold - radius -1, radius *2 +2, radius *2 +2);
+
+        // This would draw the same circle.. wasn't working
+//        ctx.beginPath();
+//        ctx.strokeStyle = 'white';
+//        ctx.arc(this.xold, this.yold, radius, 0, 5 * Math.PI);
+//        ctx.stroke();
+
+
+        // draw to new place
+        ctx.beginPath();
+        ctx.strokeStyle = 'red';
+        ctx.arc(this.x, this.y, radius, 0, 5 * Math.PI);
+        ctx.stroke();
+    }
+};
+
 // Create client's player
 socket.on('welcome', function (player) {
 
@@ -43,7 +70,7 @@ socket.on('new_position', function (data) {
 });
 
 socket.on('kick', function (id) {
- //@TODO
+    //@TODO
 });
 
 // Name change
@@ -51,12 +78,20 @@ socket.on('name_changed', function (data) {
     $('.player-' + data.id).text(data.name);
 });
 
+
 // Create the new player on the field
 function drawNewPlayer(player) {
-    player.class = '.player-' + player.id;
-    $("<div class='player-" + player.id + "'>" + player.name + "</div>").appendTo("body");
-    $(player.class).css("background-color", player.color);
+    theplayer.draw();
 }
+//ctx.beginPath();
+//    var x = Math.random() * (c.width - radius);
+//    var y = Math.random() * (c.height - radius);
+//ctx.arc(x, y, radius, 0, 5 * Math.PI);
+//ctx.stroke();
+//    player.class = '.player-' + player.id;
+//    $("<div class='player-" + player.id + "'>" + player.name + "</div>").appendTo("body");
+//    $(player.class).css("background-color", player.color);
+//}
 
 // Remove left player's div
 function deletePlayer(id) {
@@ -78,7 +113,8 @@ $(function () {
 
     function newValue(oldVal, keyCode1, keyCode2) {
         var newVal = parseInt(oldVal, 10) - (keyPressed[keyCode1] ? distance : 0) + (keyPressed[keyCode2] ? distance : 0);
-        return newVal < 0 ? 0 : newVal > maxVal ? maxVal : newVal;
+        var de = newVal < 0 ? 0 : newVal > maxVal ? maxVal : newVal;
+        return de;
     }
 
     $(window).keydown(function (event) {
@@ -93,28 +129,42 @@ $(function () {
 
     // Create a loop to move this baby
     setInterval(function () {
-        $(window.player.class).css({
-            left: function (i, v) {
-                window.c_left = newValue(v, 37, 39);
-                return window.c_left;
-            },
-            top: function (i, v) {
-                window.c_top = newValue(v, 38, 40);
-                return window.c_top;
-            }
-        });
+        theplayer.xold = theplayer.x;
+        theplayer.yold = theplayer.y;
+        theplayer.x = newValue(theplayer.x, 37, 39);
+        theplayer.y = newValue(theplayer.y, 38, 40);
 
-        if (window.last_left_pos != window.c_left) {
-            socket.emit('position', {id: window.player.id, l: window.c_left, t: window.c_top});
-            window.last_left_pos = window.c_left;
-            window.last_top_pos = window.c_top;
-        }
+        theplayer.draw();
+
+
+//        player.y = newValue(v, 38, 40);
+
+//        $(window.player.class).css({
+//            left: function (i, v) {
+//                window.c_left = newValue(v, 37, 39);
+//                return window.c_left;
+//            },
+//            top: function (i, v) {
+//                window.c_top = newValue(v, 38, 40);
+//                return window.c_top;
+//            }
+//        });
+
+//        if (window.last_left_pos != window.c_left) {
+//            socket.emit('position', {id: window.player.id, l: window.c_left, t: window.c_top});
+//            window.last_left_pos = window.c_left;
+//            window.last_top_pos = window.c_top;
+//        }
 
     }, 10);
 });
 
 
 $(document).ready(function () {
+    window.c = document.getElementById("container");
+    window.ctx = c.getContext("2d");
+    c.setAttribute('width', '600');
+    c.setAttribute('height', '300');
 
     // Change name
     $('.change_name').click(function () {
