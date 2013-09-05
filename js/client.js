@@ -5,23 +5,30 @@ var socket = io.connect('http://localhost', {port: 8088});
 var player = {};
 
 var radius = 20;
+var fieldHeigth = 600;
+var fieldWidth = 600;
+
+// Player object definition
+function Player(id) {
+    this.x: Math.random() * (fieldHeigth - radius),
+    this.y: Math.random() * (fieldWidth - radius),
+    this.id = id;
+    this.name = 'anon';
+    this.color = getRandomColor();
+    players.push(this);
+
+    rebuildLookup();
+
+}
 
 var theplayer = {
     x: Math.random() * (600 - radius),
     y: Math.random() * (300 - radius),
-    xold: this.x,
-    yold: this.y,
+    pre_x: this.x,
+    pre_y: this.y,
     draw: function () {
         // clean up old position
-
-        ctx.clearRect(this.xold - radius -1, this.yold - radius -1, radius *2 +2, radius *2 +2);
-
-        // This would draw the same circle.. wasn't working
-//        ctx.beginPath();
-//        ctx.strokeStyle = 'white';
-//        ctx.arc(this.xold, this.yold, radius, 0, 5 * Math.PI);
-//        ctx.stroke();
-
+        ctx.clearRect(this.pre_x - radius -1, this.pre_y - radius -1, radius *2 +2, radius *2 +2);
 
         // draw to new place
         ctx.beginPath();
