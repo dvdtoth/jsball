@@ -1,9 +1,9 @@
 "use strict";
 
-var config = require('config.js');
+var config = require('./config.js');
 var io = require('socket.io')(config.io.port);
-var Player = require('player');
-var Field = require('field');
+var Player = require('./player.js');
+var Field = require('./field.js');
 
 var field = new Field;
 

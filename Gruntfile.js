@@ -226,16 +226,16 @@ module.exports = function (grunt) {
         },
 
         // Renames files for browser caching purposes
-        filerev: {
-            dist: {
-                src: [
-                    '<%= yeoman.dist %>/scripts/{,*/}*.js',
-                    '<%= yeoman.dist %>/styles/{,*/}*.css',
-                    '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-                    '<%= yeoman.dist %>/styles/fonts/*'
-                ]
-            }
-        },
+        //filerev: {
+        //    dist: {
+        //        src: [
+        //            '<%= yeoman.dist %>/scripts/{,*/}*.js',
+        //            '<%= yeoman.dist %>/styles/{,*/}*.css',
+        //            '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+        //            '<%= yeoman.dist %>/styles/fonts/*'
+        //        ]
+        //    }
+        //},
 
         // Reads HTML for usemin blocks to enable smart builds that automatically
         // concat, minify and revision files. Creates configurations in memory so
@@ -371,6 +371,12 @@ module.exports = function (grunt) {
                         cwd: '.tmp/scripts',
                         dest: '<%= yeoman.dist %>/scripts',
                         src: ['*.js']
+                    },
+                    {
+                        expand: true,
+                        cwd: 'node_modules/socket.io/node_modules/socket.io-client',
+                        dest: '<%= yeoman.dist %>/scripts',
+                        src: ['socket.io.js']
                     }]
             },
             styles: {
@@ -449,7 +455,7 @@ module.exports = function (grunt) {
         'filerev',
         'usemin',
         'htmlmin',
-        //'watch'
+        'watch'
     ]);
 
     grunt.registerTask('default', [
