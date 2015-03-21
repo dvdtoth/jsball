@@ -2,7 +2,7 @@
 
 var socket = io.connect('http://localhost', {port: 8088});
 
-var
+
 var player = {};
 
 // Create client's player
