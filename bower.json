@@ -1,0 +1,25 @@
+{
+  "name": "jsball",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dvdtoth/jsball",
+  "authors": [
+    "David Toth"
+  ],
+  "description": "Experimental javascript game\"",
+  "main": "server.js",
+  "moduleType": [
+    "es6",
+    "node"
+  ],
+    "dependencies": {
+    },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}

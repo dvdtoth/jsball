@@ -13,8 +13,8 @@ body {
 }
 
 #container {
-    width: 600px;
-    height: 600px;
+    /*width: 600px;*/
+    /*height: 300px;*/
 }
 
 h1 {
@@ -34,16 +34,16 @@ h1 {
     -moz-transform: rotate(45deg);
 }
 
-div[class*='player-'] {
-    position: absolute;
-    left: 100px;
-    top: 100px;
-    height: 50px;
-    width: 50px;
-    border: #000 1px solid;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 50px;
-    font-size: 12px;
-    overflow: hidden;
-}
+/*div[class*='player-'] {*/
+    /*position: absolute;*/
+    /*left: 100px;*/
+    /*top: 100px;*/
+    /*height: 50px;*/
+    /*width: 50px;*/
+    /*border: #000 1px solid;*/
+    /*border-radius: 50%;*/
+    /*text-align: center;*/
+    /*line-height: 50px;*/
+    /*font-size: 12px;*/
+    /*overflow: hidden;*/
+/*}*/
