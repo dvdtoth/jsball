@@ -12,8 +12,14 @@
     "url": "git://github.com/dvdtoth/jsball.git"
   },
   "author": "David Toth",
-  "license": "BSD",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/dvdtoth/jsball/issues"
-  }
+  },
+  "homepage": "https://github.com/dvdtoth/jsball",
+  "dependencies": {
+    "generic-quadtree": "^1.2.2",
+    "socket.io": "^1.3.5"
+  },
+  "devDependencies": {}
 }

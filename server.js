@@ -1,6 +1,6 @@
 "use strict";
 
-var io = require('socket.io').listen(8088);
+var io = require('socket.io')(8088);
 
 var players = [];
 var lookup = {};

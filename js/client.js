@@ -1,6 +1,6 @@
 "use strict";
 
-var socket = io.connect('http://localhost', {port: 8088});
+var socket = io('http://jsball.loc:8080/');
 
 var player = {};
 
@@ -10,8 +10,8 @@ var fieldWidth = 600;
 
 // Player object definition
 function Player(id) {
-    this.x: Math.random() * (fieldHeigth - radius),
-    this.y: Math.random() * (fieldWidth - radius),
+    this.x= Math.random() * (fieldHeigth - radius);
+    this.y= Math.random() * (fieldWidth - radius);
     this.id = id;
     this.name = 'anon';
     this.color = getRandomColor();
