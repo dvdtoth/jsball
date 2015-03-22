@@ -78,7 +78,7 @@ module.exports = function (grunt) {
                                 '/lib/styles',
                                 connect.static('./lib/styles')
                             ),
-                            connect.static(appConfig.app)
+                            connect.static(appConfig.dist)
                         ];
                     }
                 }
@@ -448,7 +448,7 @@ module.exports = function (grunt) {
         'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
-        //'concat',
+        'concat',
         'copy',
         //'cdnify',
         'cssmin',
