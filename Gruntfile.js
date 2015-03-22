@@ -27,7 +27,7 @@ module.exports = function (grunt) {
                 tasks: ['wiredep']
             },
             js: {
-                files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+                files: ['<%= yeoman.app %>/client/scripts/{,*/}*.js', '<%= yeoman.app %>/server/{,*/}*.js'],
                 tasks: ['newer:jshint:all'],
                 options: {
                     livereload: '<%= connect.options.livereload %>'
@@ -116,7 +116,8 @@ module.exports = function (grunt) {
             all: {
                 src: [
                     'Gruntfile.js',
-                    '<%= yeoman.app %>/scripts/{,*/}*.js'
+                    '<%= yeoman.app %>/client/scripts/{,*/}*.js',
+                    '<%= yeoman.app %>/server/{,*/}*.js',
                 ]
             },
             test: {
@@ -149,7 +150,7 @@ module.exports = function (grunt) {
             },
             server: {
                 options: {
-                    map: true,
+                    map: true
                 },
                 files: [{
                     expand: true,
@@ -203,7 +204,7 @@ module.exports = function (grunt) {
                 cssDir: '.tmp/styles',
                 generatedImagesDir: '.tmp/images/generated',
                 imagesDir: '<%= yeoman.app %>/images',
-                javascriptsDir: '<%= yeoman.app %>/scripts',
+                javascriptsDir: '<%= yeoman.app %>/client/scripts',
                 fontsDir: '<%= yeoman.app %>/styles/fonts',
                 importPath: './bower_components',
                 httpImagesPath: '/images',
@@ -351,13 +352,13 @@ module.exports = function (grunt) {
                         '*.html',
                         'views/{,*/}*.html',
                         '*.js',
-                        'scripts/{,*/}*.js',
+                        'client/scripts/{,*/}*.js',
                         'images/{,*/}*.{webp}',
                         'styles/fonts/{,*/}*.*'
                     ]
                 }, {
                     expand: true,
-                    src: ['<%= yeoman.app %>/scripts/**/.js'],
+                    src: ['<%= yeoman.app %>/client/scripts/**/.js'],
                     dest: '<%= yeoman.dist %>/scripts/**/.js'
                 },
                     {
