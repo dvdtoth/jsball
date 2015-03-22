@@ -32,8 +32,4 @@
      <!-- text conten-->
      <text transform="matrix(1 0 0 1 102 215)" font-family="'MyriadPro-Regular'" font-size="12" id="textBlock">TESTING</text>
 
-      <g>
-       <title>Layer 1</title>
-       <circle id="ballObject" opacity="1" r="20" cy="20" cx="20" stroke="#000000" fill="#ffffff"/>
-      </g>
 </svg>
