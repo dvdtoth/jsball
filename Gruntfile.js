@@ -38,7 +38,7 @@ module.exports = function (grunt) {
                 tasks: ['newer:jshint:test', 'karma']
             },
             compass: {
-                files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+                files: ['<%= yeoman.app %>/client/styles/{,*/}*.{scss,sass}'],
                 tasks: ['compass:server', 'autoprefixer']
             },
             gruntfile: {
@@ -51,7 +51,7 @@ module.exports = function (grunt) {
                 files: [
                     '<%= yeoman.app %>/{,*/}*.html',
                     '.tmp/styles/{,*/}*.css',
-                    '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+                    '<%= yeoman.app %>/client/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
             }
         },
@@ -172,7 +172,7 @@ module.exports = function (grunt) {
         // Automatically inject Bower components into the app
         wiredep: {
             app: {
-                src: ['<%= yeoman.app %>/index.html'],
+                src: ['<%= yeoman.app %>/client/index.html'],
                 ignorePath:  /\.\.\//
             },
             test: {
@@ -192,7 +192,7 @@ module.exports = function (grunt) {
                 }
             },
             sass: {
-                src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+                src: ['<%= yeoman.app %>/client/styles/{,*/}*.{scss,sass}'],
                 ignorePath: /(\.\.\/){1,2}bower_components\//
             }
         },
@@ -242,7 +242,7 @@ module.exports = function (grunt) {
         // concat, minify and revision files. Creates configurations in memory so
         // additional tasks can operate on them
         useminPrepare: {
-            html: '<%= yeoman.app %>/index.html',
+            html: '<%= yeoman.app %>/client/index.html',
             options: {
                 dest: '<%= yeoman.dist %>',
                 flow: {
@@ -277,7 +277,7 @@ module.exports = function (grunt) {
         cssmin: {
            dist: {
              files: {
-               '<%= yeoman.dist %>/styles/main.css': [
+               '<%= yeoman.dist %>/client/styles/main.css': [
                  '.tmp/styles/{,*/}*.css'
                ]
              }
@@ -292,9 +292,9 @@ module.exports = function (grunt) {
              }
            }
         },
-        concat: {
-           dist: {}
-        },
+        //concat: {
+        //   dist: {}
+        //},
 
         imagemin: {
             dist: {
@@ -378,11 +378,17 @@ module.exports = function (grunt) {
                         cwd: 'node_modules/socket.io/node_modules/socket.io-client',
                         dest: '<%= yeoman.dist %>/scripts',
                         src: ['socket.io.js']
+                    },
+                    {
+                        expand: true,
+                        cwd: '<%= yeoman.app %>/assets',
+                        dest: '<%= yeoman.dist %>/assets',
+                        src: ['*.svg']
                     }]
             },
             styles: {
                 expand: true,
-                cwd: '<%= yeoman.app %>/styles',
+                cwd: '<%= yeoman.app %>/public/styles',
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
             }
@@ -401,15 +407,15 @@ module.exports = function (grunt) {
                 'imagemin',
                 'svgmin'
             ]
-        }
+        },
 
-        //// Test settings
-        //karma: {
-        //    unit: {
-        //        configFile: 'test/karma.conf.js',
-        //        singleRun: true
-        //    }
-        //}
+        // Test settings
+        karma: {
+            unit: {
+                configFile: 'test/karma.conf.js',
+                singleRun: true
+            }
+        }
     });
 
 
@@ -435,7 +441,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test', [
         'clean:server',
-        //'wiredep',
+        'wiredep',
         'concurrent:test',
         'autoprefixer',
         'connect:test',
@@ -444,16 +450,16 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
-        //'wiredep',
-        //'useminPrepare',
+        'wiredep',
+        'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
-        'concat',
+        //'concat',
         'copy',
         //'cdnify',
         'cssmin',
         'uglify',
-        'filerev',
+        //'filerev',
         'usemin',
         'htmlmin',
         'watch'
