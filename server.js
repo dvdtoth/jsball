@@ -12,10 +12,12 @@ io.sockets.on('connection', function (client) {
     // Set up a new player
     var player = new Player(client.id);
 
+    console.log('New player entered: ' + client.id);
     field.addPlayer(player);
 
     // Send the list of existing players
     client.emit('all_players', field.players);
+    console.log(field.players);
 
     var welcomeData = {player: player, field: field};
 
@@ -43,8 +45,6 @@ io.sockets.on('connection', function (client) {
     // socket disconnected
     client.on('disconnect', function () {
         client.broadcast.emit('player_left', client.id);
-        Player.remove(client.id);
-        Player.rebuildLookup();
         field.removePlayer(client.id);
     });
 
