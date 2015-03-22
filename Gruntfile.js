@@ -291,9 +291,9 @@ module.exports = function (grunt) {
              }
            }
         },
-        concat: {
-           dist: {}
-        },
+        //concat: {
+        //   dist: {}
+        //},
 
         imagemin: {
             dist: {
@@ -377,6 +377,12 @@ module.exports = function (grunt) {
                         cwd: 'node_modules/socket.io/node_modules/socket.io-client',
                         dest: '<%= yeoman.dist %>/scripts',
                         src: ['socket.io.js']
+                    },
+                    {
+                        expand: true,
+                        cwd: '<%= yeoman.app %>/assets',
+                        dest: '<%= yeoman.dist %>/assets',
+                        src: ['*.svg']
                     }]
             },
             styles: {
@@ -400,15 +406,15 @@ module.exports = function (grunt) {
                 'imagemin',
                 'svgmin'
             ]
-        }
+        },
 
-        //// Test settings
-        //karma: {
-        //    unit: {
-        //        configFile: 'test/karma.conf.js',
-        //        singleRun: true
-        //    }
-        //}
+        // Test settings
+        karma: {
+            unit: {
+                configFile: 'test/karma.conf.js',
+                singleRun: true
+            }
+        }
     });
 
 
@@ -434,7 +440,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test', [
         'clean:server',
-        //'wiredep',
+        'wiredep',
         'concurrent:test',
         'autoprefixer',
         'connect:test',
@@ -443,16 +449,16 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
-        //'wiredep',
-        //'useminPrepare',
+        'wiredep',
+        'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
-        'concat',
+        //'concat',
         'copy',
         //'cdnify',
         'cssmin',
         'uglify',
-        'filerev',
+        //'filerev',
         'usemin',
         'htmlmin',
         'watch'

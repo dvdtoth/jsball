@@ -1,3 +1,9 @@
+//$icon-font-path: "../fonts/bootstrap/";
+
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
 body {
     margin: 0px;
     padding: 0px;
@@ -13,6 +19,8 @@ body {
 }
 
 #container {
+    width: 100%;
+    text-align: center;
     /*width: 600px;*/
     /*height: 300px;*/
 }
@@ -33,7 +41,9 @@ h1 {
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
 }
-
+#soccerField{
+    margin: 0 auto;
+}
 /*div[class*='player-'] {*/
 /*position: absolute;*/
 /*left: 100px;*/
