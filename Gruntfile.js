@@ -381,7 +381,7 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        cwd: '<%= yeoman.app %>/assets',
+                        cwd: '<%= yeoman.app %>/client/assets',
                         dest: '<%= yeoman.dist %>/assets',
                         src: ['*.svg']
                     }]
