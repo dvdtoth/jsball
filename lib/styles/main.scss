@@ -4,14 +4,16 @@
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+@import "partial";
+
 body {
-    margin: 0px;
-    padding: 0px;
-    font-family: sans-serif;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    font-size: 12px;
+  margin: 0px;
+  padding: 0px;
+  font-family: sans-serif;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-size: 12px;
 }
 
 .change_name {
@@ -19,30 +21,30 @@ body {
 }
 
 #container {
-    width: 100%;
-    text-align: center;
-    /*width: 600px;*/
-    /*height: 300px;*/
+  width: 100%;
+  text-align: center;
+  /*width: 600px;*/
+  /*height: 300px;*/
 }
 
 h1 {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 #triangle {
-    position: absolute;
-    left: 500px;
-    overflow: hidden;
-    background-color: grey;
-    height: 1000px;
-    width: 1000px;
-    transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
+  position: absolute;
+  left: 500px;
+  overflow: hidden;
+  background-color: grey;
+  height: 1000px;
+  width: 1000px;
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
 }
 #soccerField{
-    margin: 0 auto;
+  margin: 0 auto;
 }
 /*div[class*='player-'] {*/
 /*position: absolute;*/

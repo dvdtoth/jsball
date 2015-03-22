@@ -6,7 +6,7 @@
     "David Toth"
   ],
   "description": "Experimental javascript game\"",
-  "main": "server.js",
+  "main": "lib/server/server.js",
   "moduleType": [
     "es6",
     "node"

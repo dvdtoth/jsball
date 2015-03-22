@@ -27,7 +27,7 @@ module.exports = function (grunt) {
                 tasks: ['wiredep']
             },
             js: {
-                files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+                files: ['<%= yeoman.app %>/client/scripts/{,*/}*.js', '<%= yeoman.app %>/server/{,*/}*.js'],
                 tasks: ['newer:jshint:all'],
                 options: {
                     livereload: '<%= connect.options.livereload %>'
@@ -51,7 +51,7 @@ module.exports = function (grunt) {
                 files: [
                     '<%= yeoman.app %>/{,*/}*.html',
                     '.tmp/styles/{,*/}*.css',
-                    '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+                    '<%= yeoman.app %>/client/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
             }
         },
@@ -116,7 +116,8 @@ module.exports = function (grunt) {
             all: {
                 src: [
                     'Gruntfile.js',
-                    '<%= yeoman.app %>/scripts/{,*/}*.js'
+                    '<%= yeoman.app %>/client/scripts/{,*/}*.js',
+                    '<%= yeoman.app %>/server/{,*/}*.js',
                 ]
             },
             test: {
@@ -149,7 +150,7 @@ module.exports = function (grunt) {
             },
             server: {
                 options: {
-                    map: true,
+                    map: true
                 },
                 files: [{
                     expand: true,
@@ -171,7 +172,7 @@ module.exports = function (grunt) {
         // Automatically inject Bower components into the app
         wiredep: {
             app: {
-                src: ['<%= yeoman.app %>/index.html'],
+                src: ['<%= yeoman.app %>/client/index.html'],
                 ignorePath:  /\.\.\//
             },
             test: {
@@ -203,7 +204,7 @@ module.exports = function (grunt) {
                 cssDir: '.tmp/styles',
                 generatedImagesDir: '.tmp/images/generated',
                 imagesDir: '<%= yeoman.app %>/images',
-                javascriptsDir: '<%= yeoman.app %>/scripts',
+                javascriptsDir: '<%= yeoman.app %>/client/scripts',
                 fontsDir: '<%= yeoman.app %>/styles/fonts',
                 importPath: './bower_components',
                 httpImagesPath: '/images',
@@ -241,7 +242,7 @@ module.exports = function (grunt) {
         // concat, minify and revision files. Creates configurations in memory so
         // additional tasks can operate on them
         useminPrepare: {
-            html: '<%= yeoman.app %>/index.html',
+            html: '<%= yeoman.app %>/client/index.html',
             options: {
                 dest: '<%= yeoman.dist %>',
                 flow: {
@@ -343,7 +344,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     dot: true,
-                    cwd: '<%= yeoman.app %>',
+                    cwd: '<%= yeoman.app %>/client',
                     dest: '<%= yeoman.dist %>',
                     src: [
                         '*.{ico,png,txt}',
@@ -355,39 +356,33 @@ module.exports = function (grunt) {
                         'images/{,*/}*.{webp}',
                         'styles/fonts/{,*/}*.*'
                     ]
-                }, {
-                    expand: true,
-                    src: ['<%= yeoman.app %>/scripts/**/.js'],
-                    dest: '<%= yeoman.dist %>/scripts/**/.js'
-                },
-                    {
-                    expand: true,
-                    cwd: '.tmp/images',
-                    dest: '<%= yeoman.dist %>/images',
-                    src: ['generated/*']
-                },
+                    }, {
+                        expand: true,
+                        src: ['<%= yeoman.app %>/client/scripts/**/.js'],
+                        dest: '<%= yeoman.dist %>/scripts/**/.js'
+                    },
                     {
                         expand: true,
-                        cwd: '.tmp/scripts',
-                        dest: '<%= yeoman.dist %>/scripts',
-                        src: ['*.js']
+                        cwd: '<%= yeoman.app %>/client/assets',
+                        dest: '<%= yeoman.dist %>/assets',
+                        src: ['*.svg']
+                    },
+                    {
+                        expand: true,
+                        cwd: '.tmp/images',
+                        dest: '<%= yeoman.dist %>/images',
+                        src: ['generated/*']
                     },
                     {
                         expand: true,
                         cwd: 'node_modules/socket.io/node_modules/socket.io-client',
                         dest: '<%= yeoman.dist %>/scripts',
                         src: ['socket.io.js']
-                    },
-                    {
-                        expand: true,
-                        cwd: '<%= yeoman.app %>/assets',
-                        dest: '<%= yeoman.dist %>/assets',
-                        src: ['*.svg']
                     }]
             },
             styles: {
                 expand: true,
-                cwd: '<%= yeoman.app %>/styles',
+                cwd: '<%= yeoman.app %>/client/styles',
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
             }
