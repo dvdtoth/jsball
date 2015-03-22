@@ -1,31 +1,32 @@
 "use strict"
 
-var players = [];
-var lookup = [];
 
 function Field() {
 
+    this.players = [];
+    this.lookup = [];
+
     this.rebuildLookup = function() {
         var i = 0,
-            len = players.length;
+            len = this.players.length;
         for (i, len; i < len; i++) {
-            lookup[players[i].id] = players[i];
+            this.lookup[this.players[i].id] = this.players[i];
         }
     };
 
     // New object created, rebuild lookup array
     this.addPlayer = function (player) {
-        players.push(player);
+        this.players.push(player);
+        console.log(this.players);
         this.rebuildLookup();
     }
 
     // To test
     this.removePlayer = function (id) {
-        players.splice(lookup[id], 1)
+        this.players.splice(this.lookup[id], 1)
         this.rebuildLookup();
     }
 
-    this.lookup = lookup;
 };
 
 module.exports = Field;
