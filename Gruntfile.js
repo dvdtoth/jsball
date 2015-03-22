@@ -38,7 +38,7 @@ module.exports = function (grunt) {
                 tasks: ['newer:jshint:test', 'karma']
             },
             compass: {
-                files: ['<%= yeoman.app %>/client/styles/{,*/}*.{scss,sass}'],
+                files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['compass:server', 'autoprefixer']
             },
             gruntfile: {
@@ -192,7 +192,7 @@ module.exports = function (grunt) {
                 }
             },
             sass: {
-                src: ['<%= yeoman.app %>/client/styles/{,*/}*.{scss,sass}'],
+                src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
                 ignorePath: /(\.\.\/){1,2}bower_components\//
             }
         },
@@ -277,7 +277,7 @@ module.exports = function (grunt) {
         cssmin: {
            dist: {
              files: {
-               '<%= yeoman.dist %>/client/styles/main.css': [
+               '<%= yeoman.dist %>/styles/main.css': [
                  '.tmp/styles/{,*/}*.css'
                ]
              }
@@ -356,34 +356,28 @@ module.exports = function (grunt) {
                         'images/{,*/}*.{webp}',
                         'styles/fonts/{,*/}*.*'
                     ]
-                }, {
-                    expand: true,
-                    src: ['<%= yeoman.app %>/client/scripts/**/.js'],
-                    dest: '<%= yeoman.dist %>/scripts/**/.js'
-                },
-                    {
-                    expand: true,
-                    cwd: '.tmp/images',
-                    dest: '<%= yeoman.dist %>/images',
-                    src: ['generated/*']
-                },
-                    {
+                    }, {
                         expand: true,
-                        cwd: '.tmp/scripts',
-                        dest: '<%= yeoman.dist %>/scripts',
-                        src: ['*.js']
-                    },
-                    {
-                        expand: true,
-                        cwd: 'node_modules/socket.io/node_modules/socket.io-client',
-                        dest: '<%= yeoman.dist %>/scripts',
-                        src: ['socket.io.js']
+                        src: ['<%= yeoman.app %>/client/scripts/**/.js'],
+                        dest: '<%= yeoman.dist %>/scripts/**/.js'
                     },
                     {
                         expand: true,
                         cwd: '<%= yeoman.app %>/client/assets',
                         dest: '<%= yeoman.dist %>/assets',
                         src: ['*.svg']
+                    },
+                    {
+                        expand: true,
+                        cwd: '.tmp/images',
+                        dest: '<%= yeoman.dist %>/images',
+                        src: ['generated/*']
+                    },
+                    {
+                        expand: true,
+                        cwd: 'node_modules/socket.io/node_modules/socket.io-client',
+                        dest: '<%= yeoman.dist %>/scripts',
+                        src: ['socket.io.js']
                     }]
             },
             styles: {

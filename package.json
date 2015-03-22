@@ -5,7 +5,7 @@
   "main": "lib/server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node lib/server/server.js"
+    "start": "DEBUG=* node lib/server/server.js"
   },
   "repository": {
     "type": "git",
