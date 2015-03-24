@@ -1,1 +1,67 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"> <title>JSBall</title> <link href="styles/main.css" rel="stylesheet" type="text/css"> <script type="text/javascript" src="scripts/socket.io.js"></script> <script type="text/javascript" src="scripts/effects.js"></script> <script type="text/javascript" src="scripts/client.js"></script>  <body> <nav class="navbar navbar-default"> <div class="container-fluid"> <div class="navbar-header"> <a class="navbar-brand" href="/"> JSBall </a> </div> <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5"> <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Change Name</a></p> </div> </div> </nav> <div id="container"> <svg width="22cm" height="14cm" viewBox="0 0 1150 720" stroke="white" version="1.1" xmlns="http://www.w3.org/2000/svg"> <!--Drawing Area--> <rect x="0" y="0" width="1150" height="720" fill="green"/> <!--Stadium box and midline--> <path d="M 575,20 L 50,20 50,700 1100,700 1100,20 575,20 575,700 z" stroke="white" stroke-width="2" fill="green"/> <!--Midline--> <circle cx="575" cy="360" r="91.5" stroke="white" stroke-width="2" fill-opacity="0"/> <circle cx="575" cy="360" r="2" stroke="white" fill="white" id="greenBlock"/> <!--The penalty spot--> <circle cx="160" cy="360" r="2" stroke="white" fill="white"/> <circle cx="990" cy="360" r="2" stroke="white" fill="white"/> <!--Goal--> <path d="M 50,324.4 L 40,324.4 40, 396.6 50 396.6 z" stroke="white" stroke-width="2" fill-opacity="0"/> <path d="M 1100,324.4 L 1110,324.4 1110,396.6 1100,396.6 z" stroke="white" stroke-width="2" fill-opacity="0"/> <!--Goal area--> <path d="M 50,269.4 L 105,269.4 105,451.6 50 451.6 z" stroke="white" stroke-width="2" fill-opacity="0"/> <path d="M 1100,269.4 L 1045,269.4 1045,451.6 1100,451.6 z" stroke="white" stroke-width="2" fill-opacity="0"/> <!--Restricted area --> <path d="M 50,159.4 L 215,159.4 215,561.6 50 561.6 z" stroke="white" stroke-width="2" fill-opacity="0"/> <path d="M 1100,159.4 L 935,159.4 935,561.6 1100,561.6 z" stroke="white" stroke-width="2" fill-opacity="0"/> <path d="M 215,286.875 A 91.5,91.5 0 0,1 215,433.125 z" stroke="white" stroke-width="2" fill="green"/> <path d="M 935,286.875 A 91.5,91.5 0 0,0 935,433.125 z" stroke="white" stroke-width="2" fill="green"/> <!--Corner arc--> <path d="M 50,30 A 10,10 0 0,0 60,20 L 50,20 z" stroke="white" stroke-width="2" fill-opacity="0"/> <path d="M 60,700 A 10,10 0 0,0 50,690 L 50,700 z" stroke="white" stroke-width="2" fill-opacity="0"/> <path d="M 1100,690 A 10,10 0 0,0 1090,700 L 1100,700 z" stroke="white" stroke-width="2" fill-opacity="0"/> <path d="M 1090,20 A 10,10 0 0,0 1100,30 L 1100,20 z" stroke="white" stroke-width="2" fill-opacity="0"/> <!-- text conten--> <text transform="matrix(1 0 0 1 102 215)" font-family="'MyriadPro-Regular'" font-size="12" id="textBlock">TESTING</text> </svg> </div> <div class="footer"> <p>Created: David Toth & David Breuer</p> </div>  
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" >
+    <title>JSBall</title>
+    <script type="text/javascript" src="scripts/socket.io.54c1b555.js"></script>
+    <script type="text/javascript" src="scripts/effects.61714b32.js"></script>
+    <script type="text/javascript" src="scripts/client.0037ce39.js"></script>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="styles/main.3bd636fa.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+                JSBall
+            </a>
+
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
+            <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Change Name</a></p>
+        </div>
+    </div>
+</nav>
+<div id="container">
+    <svg width="22cm" height="14cm" viewBox="0 0 1150 720" stroke="white" version="1.1"
+         xmlns="http://www.w3.org/2000/svg">
+        <!--Drawing Area-->
+        <rect x="0" y="0" width="1150" height="720" fill="green" />
+        <!--Stadium box and midline-->
+        <path d="M 575,20 L 50,20 50,700 1100,700 1100,20 575,20 575,700 z" stroke="white" stroke-width="2" fill="green" />
+        <!--Midline-->
+        <circle cx="575" cy="360" r="91.5" stroke="white" stroke-width="2" fill-opacity="0" />
+        <circle cx="575" cy="360" r="2" stroke="white" fill="white" id="greenBlock" />
+        <!--The penalty spot-->
+        <circle cx="160" cy="360" r="2" stroke="white" fill="white" />
+        <circle cx="990" cy="360" r="2" stroke="white" fill="white" />
+        <!--Goal-->
+        <path d="M 50,324.4 L 40,324.4 40, 396.6 50 396.6 z" stroke="white" stroke-width="2" fill-opacity="0" />
+        <path d="M 1100,324.4 L 1110,324.4 1110,396.6 1100,396.6 z" stroke="white" stroke-width="2" fill-opacity="0" />
+        <!--Goal area-->
+        <path d="M 50,269.4 L 105,269.4 105,451.6 50 451.6 z" stroke="white" stroke-width="2" fill-opacity="0" />
+        <path d="M 1100,269.4 L 1045,269.4 1045,451.6 1100,451.6 z" stroke="white" stroke-width="2" fill-opacity="0" />
+        <!--Restricted area -->
+        <path d="M 50,159.4 L 215,159.4 215,561.6 50 561.6 z" stroke="white" stroke-width="2" fill-opacity="0" />
+        <path d="M 1100,159.4 L 935,159.4 935,561.6 1100,561.6 z" stroke="white" stroke-width="2" fill-opacity="0" />
+        <path d="M 215,286.875 A 91.5,91.5 0 0,1 215,433.125 z" stroke="white" stroke-width="2" fill="green" />
+        <path d="M 935,286.875 A 91.5,91.5 0 0,0 935,433.125 z" stroke="white" stroke-width="2" fill="green" />
+        <!--Corner arc-->
+        <path d="M 50,30 A 10,10 0 0,0 60,20 L 50,20 z" stroke="white" stroke-width="2" fill-opacity="0" />
+        <path d="M 60,700 A 10,10 0 0,0 50,690 L 50,700 z" stroke="white" stroke-width="2" fill-opacity="0" />
+        <path d="M 1100,690 A 10,10 0 0,0 1090,700 L 1100,700 z" stroke="white" stroke-width="2" fill-opacity="0" />
+        <path d="M 1090,20 A 10,10 0 0,0 1100,30 L 1100,20 z" stroke="white" stroke-width="2" fill-opacity="0" />
+
+        <!-- text conten-->
+        <text transform="matrix(1 0 0 1 102 215)" font-family="'MyriadPro-Regular'" font-size="12" id="textBlock">TESTING</text>
+    </svg>
+</div>
+<div class="footer">
+    <p>Created: David Toth & David Breuer</p>
+</div>
+<script src="scripts/vendor.d41d8cd9.js"></script>
+<script src="scripts/scripts.d41d8cd9.js"></script>
+</body>
+</html>
