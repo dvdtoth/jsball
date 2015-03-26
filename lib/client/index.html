@@ -3,10 +3,17 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" >
     <title>JSBall</title>
-    <link href='styles/main.css' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="scripts/socket.io.js"></script>
-    <script type="text/javascript" src="scripts/effects.js  "></script>
+    <script type="text/javascript" src="scripts/effects.js"></script>
     <script type="text/javascript" src="scripts/client.js"></script>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -22,7 +29,6 @@
         </div>
     </div>
 </nav>
-
 <div id="container">
     <svg width="22cm" height="14cm" viewBox="0 0 1150 720" stroke="white" version="1.1"
          xmlns="http://www.w3.org/2000/svg">
@@ -57,11 +63,9 @@
         <text transform="matrix(1 0 0 1 102 215)" font-family="'MyriadPro-Regular'" font-size="12" id="textBlock">TESTING</text>
     </svg>
 </div>
-
 <div class="footer">
     <p>Created: David Toth & David Breuer</p>
 </div>
-
 <!-- build:js(.) scripts/vendor.js -->
 <!-- bower:js -->
 <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -75,14 +79,10 @@
 <script src="../bower_components/angular-touch/angular-touch.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
-
 <!-- build:js({.tmp,lib}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
-<script src="scripts/app.controller.js"></script>
-<script src="scripts/app.filters.js"></script>
-<script src="scripts/app.directives.js"></script>
-<script src="scripts/app.services.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/about.js"></script>
 <!-- endbuild -->
-
 </body>
 </html>
