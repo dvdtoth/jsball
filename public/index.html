@@ -5,28 +5,27 @@
     <title>JSBall</title>
     <script type="text/javascript" src="scripts/socket.io.54c1b555.js"></script>
     <script type="text/javascript" src="scripts/effects.61714b32.js"></script>
-    <script type="text/javascript" src="scripts/client.0037ce39.js"></script>
+    <script type="text/javascript" src="scripts/client.51252ada.js"></script>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-    <link rel="stylesheet" href="styles/main.3bd636fa.css">
+    <link rel="stylesheet" href="styles/vendor.30996f05.css">
+    <link rel="stylesheet" href="styles/main.b14f4ce4.css">
 </head>
-<body>
-<nav class="navbar navbar-default">
+<body ng-app="jsBall" ng-controller="MainCtrl as jb">
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">
-                JSBall
+                <i class="fa fa-menu"></i>
             </a>
 
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
-            <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Change Name</a></p>
+            <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link" ng-click="jb.changeName('valami')">{{jb.player.name}}</a></p>
         </div>
     </div>
 </nav>
-<div id="container">
-    <svg width="22cm" height="14cm" viewBox="0 0 1150 720" stroke="white" version="1.1"
-         xmlns="http://www.w3.org/2000/svg">
+<div id="container" class="fade">
+    <svg id="soccerField"  width="22cm" height="14cm" viewBox="0 0 1150 720" stroke="white" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <!--Drawing Area-->
         <rect x="0" y="0" width="1150" height="720" fill="green" />
         <!--Stadium box and midline-->
@@ -61,7 +60,10 @@
 <div class="footer">
     <p>Created: David Toth & David Breuer</p>
 </div>
-<script src="scripts/vendor.d41d8cd9.js"></script>
-<script src="scripts/scripts.d41d8cd9.js"></script>
+<script src="scripts/vendor.bf1d8034.js"></script>
+
+<script src="scripts/app.3b8c516d.js"></script>
+
+
 </body>
 </html>

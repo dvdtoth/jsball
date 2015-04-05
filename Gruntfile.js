@@ -171,7 +171,7 @@ module.exports = function (grunt) {
 
         // Automatically inject Bower components into the app
         wiredep: {
-            app: {
+            lib: {
                 src: ['<%= yeoman.app %>/client/index.html'],
                 ignorePath:  /\.\.\//
             },
@@ -274,24 +274,24 @@ module.exports = function (grunt) {
         // By default, your `index.html`'s <!-- Usemin block --> will take care of
         // minification. These next options are pre-configured if you do not wish
         // to use the Usemin blocks.
-        cssmin: {
-           dist: {
-             files: {
-               '<%= yeoman.dist %>/styles/main.css': [
-                 '.tmp/styles/{,*/}*.css'
-               ]
-             }
-           }
-        },
-        uglify: {
-           dist: {
-             files: {
-               '<%= yeoman.dist %>/scripts/*..js': [
-                 '<%= yeoman.dist %>/scripts/*..js'
-               ]
-             }
-           }
-        },
+        //cssmin: {
+        //   dist: {
+        //     files: {
+        //       '<%= yeoman.dist %>/styles/main.css': [
+        //         '.tmp/styles/{,*/}*.css'
+        //       ]
+        //     }
+        //   }
+        //},
+        //uglify: {
+        //   dist: {
+        //     files: {
+        //       '<%= yeoman.dist %>/scripts/*..js': [
+        //         '<%= yeoman.dist %>/scripts/*..js'
+        //       ]
+        //     }
+        //   }
+        //},
         //concat: {
         //   dist: {}
         //},
@@ -356,10 +356,6 @@ module.exports = function (grunt) {
                         'images/{,*/}*.{webp}',
                         'styles/fonts/{,*/}*.*'
                     ]
-                    }, {
-                        expand: true,
-                        src: ['<%= yeoman.app %>/client/scripts/**/.js'],
-                        dest: '<%= yeoman.dist %>/scripts/**/.js'
                     },
                     {
                         expand: true,
@@ -387,7 +383,16 @@ module.exports = function (grunt) {
                 src: '{,*/}*.css'
             }
         },
-
+        ngAnnotate: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '.tmp/concat/scripts',
+                    src: '*.js',
+                    dest: '.tmp/concat/scripts'
+                }]
+            }
+        },
         // Run some tasks in parallel to speed up the build process
         concurrent: {
             server: [
@@ -449,6 +454,7 @@ module.exports = function (grunt) {
         'concurrent:dist',
         'autoprefixer',
         'concat',
+        'ngAnnotate',
         'copy',
         //'cdnify',
         'cssmin',

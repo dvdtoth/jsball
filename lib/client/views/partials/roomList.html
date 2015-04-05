@@ -1,0 +1,45 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Rooms</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row" ng-controller="MainCtrl as jb">
+            <div class="col-xs-10">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Room Name</th>
+                        <th>Players</th>
+                        <th>Closed</th>
+                        <th>Place</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="room in jb.rooms">
+                        <th scope="row">{{$index}}</th>
+                        <td>{{room.name}}</td>
+                        <td>{{room.players}} / {{room.maxPlayer}}</td>
+                        <td>
+                            <span ng-if="room.auth">Closed</span>
+                            <span ng-if="!room.auth">Free</span>
+                        </td>
+                        <td>{{room.location.country}} / {{room.location.city}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-2">
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation"><a href="#">Refresh</a></li>
+                    <li role="presentation"><a href="#" ng-click="jb.joinGame(); closeThisDialog(0)">Join Room</a></li>
+                    <li role="presentation"><a href="#">Create Room</a></li>
+                    <li class="divider"></li>
+                    <li role="presentation"><a href="#">Replays</a></li>
+                    <li role="presentation"><a href="#">Options</a></li>
+                    <li role="presentation"><a href="#" ng-click="closeThisDialog(0)">LogOut</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

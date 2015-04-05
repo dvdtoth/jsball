@@ -7,31 +7,32 @@
     <script type="text/javascript" src="scripts/effects.js"></script>
     <script type="text/javascript" src="scripts/client.js"></script>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
+    <!-- build:css(.tmp) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/ngDialog/css/ngDialog.css" />
+    <link rel="stylesheet" href="../bower_components/ngDialog/css/ngDialog-theme-default.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 </head>
-<body>
-<nav class="navbar navbar-default">
+<body ng-app="jsBall" ng-controller="MainCtrl as jb">
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">
-                JSBall
+                <i class="fa fa-menu"></i>
             </a>
 
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
-            <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Change Name</a></p>
+            <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link" ng-click="jb.changeName('valami')">{{jb.player.name}}</a></p>
         </div>
     </div>
 </nav>
-<div id="container">
-    <svg width="22cm" height="14cm" viewBox="0 0 1150 720" stroke="white" version="1.1"
-         xmlns="http://www.w3.org/2000/svg">
+<div id="container" class="fade">
+    <svg id="soccerField"  width="22cm" height="14cm" viewBox="0 0 1150 720" stroke="white" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <!--Drawing Area-->
         <rect x="0" y="0" width="1150" height="720" fill="green" />
         <!--Stadium box and midline-->
@@ -66,7 +67,7 @@
 <div class="footer">
     <p>Created: David Toth & David Breuer</p>
 </div>
-<!-- build:js(.) scripts/vendor.js -->
+<!-- build:js(lib) scripts/vendor.js -->
 <!-- bower:js -->
 <script src="../bower_components/jquery/dist/jquery.js"></script>
 <script src="../bower_components/angular/angular.js"></script>
@@ -77,12 +78,18 @@
 <script src="../bower_components/angular-route/angular-route.js"></script>
 <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="../bower_components/angular-touch/angular-touch.js"></script>
+<script src="../bower_components/ngDialog/js/ngDialog.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
-<!-- build:js({.tmp,lib}) scripts/scripts.js -->
+
+<!-- build:js(lib/client) scripts/app.js -->
 <script src="scripts/app.js"></script>
-<script src="scripts/controllers/main.js"></script>
-<script src="scripts/controllers/about.js"></script>
+<script src="scripts/app.controller.js"></script>
+<script src="scripts/app.directives.js"></script>
+<script src="scripts/app.filters.js"></script>
+<script src="scripts/app.services.js"></script>
 <!-- endbuild -->
+
+
 </body>
 </html>
